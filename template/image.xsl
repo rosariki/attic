@@ -34,7 +34,7 @@ YUI().use('node', 'event', function (Y) {
     <body>
       <div>
         <xsl:call-template name="top-navigatoin-bar"/>
-        <h1><xsl:value-of select="atom:title"/></h1>
+        <!--<h1><xsl:value-of select="atom:title"/></h1>-->
       </div>
       <figure>
         <div>

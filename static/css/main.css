@@ -2,6 +2,36 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
+p
+{
+margin: 5px 0;
+line-height: 25px;
+}
+
+header 
+{
+ font-size: 20px;
+}
+
+header nav, header h1
+{
+ display:inline;
+}
+
+
+
+.clear
+{
+clear:both;
+}
+
+.hidden
+{
+position:absolute;
+clip: rect(1px 1px 1px 1px); /* IE6 & 7 */
+clip: rect(1px, 1px, 1px, 1px);
+}
+
 img.main {
 	margin-right: 1em;
 	margin-top: 0.2em;
@@ -9,14 +39,11 @@ img.main {
 }
 
 img.th {
-	margin-right: 0.2em;
-	margin-bottom: 0.2em
+        height: 12em;
+/*	margin-right: 0.2em;
+	margin-bottom: 0.2em*/
 }
 
-figure {
-	margin-left: 4em;
-	margin-top: 1em;
-}
 
 div.navigation-bar, h1  {
 	display: inline;

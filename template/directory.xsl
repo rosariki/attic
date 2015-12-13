@@ -7,26 +7,21 @@
 <xsl:template match="atom:feed">
   <html>
     <head>
+      <link rel='stylesheet' href='/css/directory.css'/>
       <title><xsl:value-of select="atom:title"/></title>
       <xsl:call-template name="common-html-head-tags"/>
-      <style type="text/css">
-ul.links { list-style: none; margin: 0; padding: 0; display: inline }
-ul.links li { display: inline }
-ul.links li:after { content: "," } 
-ul.links li:last-child:after { content: "" }
-      </style>
     </head>
     <body>
       <xsl:call-template name="top-navigatoin-bar"/>
-      <h1><xsl:value-of select="atom:title"/></h1>
+      <!--<h1><xsl:value-of select="atom:title"/></h1> -->
       <xsl:if test="atom:entry[atom:category/@term='image' or atom:category/@term='video']">
-        <p>
-          <!-- h2>Images:</h2>  -->
+        <section id="preview">
+          <h2 class="hidden">Previews:</h2> 
           <xsl:apply-templates select="atom:entry[atom:category/@term='image' or atom:category/@term='video']"/>
-        </p>
+        </section>
       </xsl:if>
       <xsl:if test="atom:entry[atom:category/@term='directory']">
-        <nav>
+        <nav id="subdirectories">
           <h2>More:</h2>
           <ul class="links"> 
             <xsl:apply-templates select="atom:entry[atom:category/@term='directory']"/>
@@ -44,16 +39,21 @@ ul.links li:last-child:after { content: "" }
 </xsl:template>
 
 <xsl:template match="/atom:feed/atom:entry[atom:category/@term='image']">
-  <a href="{atom:link/@href}">
-    <xsl:apply-templates select="atom:link[@rel='alternate' and @type='image/jpg']" mode="image-thumbnail">
-      <xsl:with-param name="size" select="'small'"/>
-      <xsl:with-param name="class" select="'th'"/>
-    </xsl:apply-templates>
-  </a>
+  <article class="img-preview">
+  <h3 class="hidden"><xsl:value-of select="atom:title"/></h3>
+  <figure>
+   <a href="{atom:link[@rel='alternate']/@href}" data-lightbox="gallery">
+     <xsl:apply-templates select="atom:link[@rel='alternate' and @type='image/jpg']" mode="image-thumbnail">
+       <xsl:with-param name="size" select="'small'"/>
+       <xsl:with-param name="class" select="'th'"/>
+     </xsl:apply-templates>
+   </a>
+  </figure>
+ </article>
 </xsl:template>
 
 <xsl:template match="/atom:feed/atom:entry[atom:category/@term='video']">
-  <a href="{atom:link/@href}"><img class="th" src="{atom:link[@rel='alternate' and @type='image/jpg']/@href}?type=image"/></a>
+  <a href="{atom:link/@href}"><img class="th"  src="{atom:link[@rel='alternate' and @type='image/jpg']/@href}?type=image"/></a>
 </xsl:template>
 
 </xsl:stylesheet>
