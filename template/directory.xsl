@@ -42,7 +42,7 @@
   <article class="img-preview">
   <h3 class="hidden"><xsl:value-of select="atom:title"/></h3>
   <figure>
-   <a href="{atom:link[@rel='alternate']/@href}" data-lightbox="gallery">
+   <a href="{atom:link/@href}">
      <xsl:apply-templates select="atom:link[@rel='alternate' and @type='image/jpg']" mode="image-thumbnail">
        <xsl:with-param name="size" select="'small'"/>
        <xsl:with-param name="class" select="'th'"/>

@@ -9,16 +9,14 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
   <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'/>
   <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen" />
-  <link type="text/css" href="/css/lightbox.css" rel="stylesheet" />
   <script src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js" type="text/javascript"></script>
   <script src="/js/modernizr.js"></script>
   <!--<script src="/js/respond.min.js"></script>-->
 
-  <!-- todo: include extern jQuery file but fall back to local file if extern one fails to load 
-  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>-->
+  <!-- todo: include extern jQuery file but fall back to local file if extern one fails to load -->
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
   <script src="/js/prefixfree.min.js"></script>
-  <!--<script src="/js/lightbox-plus-jquery.min.js"></script>-->
   <style>
 @import url("/css/reset.css");
 @import url("/css/main.css");
@@ -108,6 +106,5 @@ a.next {
       &#169; 1999&#150;2013 Dmitri Popov
     </section>
   </footer> 
-  <script src="/js/lightbox-plus-jquery.js"></script>
 </xsl:template>
 </xsl:stylesheet>
