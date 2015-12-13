@@ -4,28 +4,23 @@
   xmlns:th="http://dp-net.com/2013/th">
 
 <xsl:template name="common-html-head-tags">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+  <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'/>
+  <link rel="stylesheet" href="/css/reset.css" type="text/css" media="screen" />
+  <link type="text/css" href="/css/lightbox.css" rel="stylesheet" />
   <script src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js" type="text/javascript"></script>
-  <script type="text/javascript"><![CDATA[
-YUI().use('event', function (Y) {
-  Y.on('domready', function (e) {
-    document.cookie = 'clientHeight=' + document.body.clientHeight + '; path=/';
-    document.cookie = 'clientWidth=' + document.body.clientWidth + '; path=/';
-    if (window.devicePixelRatio) {
-      document.cookie = 'devicePixelRatio=' + window.devicePixelRatio + '; path=/';
-    }
-  });
-});
-  ]]></script>
-<!-- scroll out address bar on iPhone
-  <script type="text/javascript"><![CDATA[
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    window.scrollTo(0, 1);
-  }, 0);
-});
-  ]]></script>
--->
+  <script src="/js/modernizr.js"></script>
+  <!--<script src="/js/respond.min.js"></script>-->
+
+  <!-- todo: include extern jQuery file but fall back to local file if extern one fails to load !-->
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+  <script src="/js/lightbox.js"></script>
+  <script src="/js/prefixfree.min.js"></script>
   <style>
+@import url("/css/reset.css");
 @import url("/css/main.css");
 @import url("/css/phone.css") (max-width: 600px);
 a.previous, a.next {
@@ -40,58 +35,6 @@ a.next {
   right: 1px;
 }
   </style>
-  <script type="text/javascript"><![CDATA[
-(function(doc) {
-  var addEvent = 'addEventListener',
-      type = 'gesturestart',
-      qsa = 'querySelectorAll',
-      scales = [1, 1],
-      meta = qsa in doc ? doc[qsa]('meta[name=viewport]') : [];
-  function fix() {
-    meta.content = 'width=device-width,minimum-scale=' + scales[0] + ',maximum-scale=' + scales[1];
-    doc.removeEventListener(type, fix, true);
-  }
-  if ((meta = meta[meta.length - 1]) && addEvent in doc) {
-    fix();
-    scales = [.25, 1.6];
-    doc[addEvent](type, fix, true);
-  }
-}(document));
-  ]]></script>
-  <script type="text/javascript"><![CDATA[
-var stdImageWidth = [300, 450, 600, 800, 1000, 1200];
-YUI().use('node', function (Y) {
-  window.addEventListener("orientationchange", function() {
-    document.cookie = 'clientHeight=' + document.body.clientHeight + '; path=/';
-    document.cookie = 'clientWidth=' + document.body.clientWidth + '; path=/';
-    var width = document.body.clientWidth;
-    var w = 300;
-    stdImageWidth.forEach(function(stdWidth) {
-      if (width > stdWidth && stdWidth > w) {
-        w = stdWidth;
-      }
-    });
-    var src = Y.one('img.main').getAttribute('src');
-    src = src.replace(/size\=([a-z]+)/, 'px=' + w);
-    src = src.replace(/px\=([0-9]+)/, 'px=' + w);
-    Y.one('img.main').setAttribute('src', src);
-  }, false);
-});
-  ]]></script>
-  <!-- <meta name="viewport" content="width=device-width"/>  -->
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
-  <script type="text/javascript"><![CDATA[
-var _gaq = _gaq || [];
-var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-_gaq.push(['_setAccount', 'UA-37409706-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-  ]]></script>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'/>
 </xsl:template>
 
@@ -151,4 +94,10 @@ _gaq.push(['_trackPageview']);
   </xsl:choose>
 </xsl:template>
 
+<xsl:template name="footer">
+   <footer>
+    <hr width="300px" align="left" style="margin-top: 1em; clear: both"/>
+    <div class="copyright-notice">&#169; 1999&#150;2013 Dmitri Popov</div>
+  </footer>
+</xsl:template>
 </xsl:stylesheet>

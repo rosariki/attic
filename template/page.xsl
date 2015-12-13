@@ -14,6 +14,8 @@
       <xsl:call-template name="top-navigatoin-bar"/>
       <h1><xsl:value-of select="atom:title"/></h1>
       <div class="page-content"><xsl:copy-of select="atom:content"/></div>
+
+      <xsl:call-template name="footer"/>
     </body>
   </html>
 </xsl:template>

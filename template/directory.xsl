@@ -26,13 +26,15 @@ ul.links li:last-child:after { content: "" }
         </p>
       </xsl:if>
       <xsl:if test="atom:entry[atom:category/@term='directory']">
-        <div>
-          <h2>Directories:</h2>
+        <nav>
+          <h2>More:</h2>
           <ul class="links"> 
             <xsl:apply-templates select="atom:entry[atom:category/@term='directory']"/>
           </ul>
-        </div>
+        </nav>
       </xsl:if>
+
+      <xsl:call-template name="footer"/>
     </body>
   </html>
 </xsl:template>

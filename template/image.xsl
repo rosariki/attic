@@ -51,9 +51,11 @@ YUI().use('node', 'event', function (Y) {
             </p>
           </figcaption>
         </div>
-        <hr width="300px" align="left" style="margin-top: 1em; clear: both"/>
-        <div class="copyright-notice">&#169; 1999&#150;2013 Dmitri Popov</div>
+       <!-- <hr width="300px" align="left" style="margin-top: 1em; clear: both"/>
+        <div class="copyright-notice">&#169; 1999&#150;2013 Dmitri Popov</div> -->
       </figure>
+
+      <xsl:call-template name="footer"/>
     </body>
   </html>
 </xsl:template>

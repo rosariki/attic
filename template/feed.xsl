@@ -14,11 +14,14 @@
       <xsl:apply-templates select="atom:link[@rel='previous' or @rel='next' or @rel='index']" mode="head"/>
     </head>
     <body>
+  fdvfvfdvd
       <xsl:call-template name="top-navigatoin-bar"/>
       <h1><xsl:value-of select="atom:title"/></h1>
       <div class="page-content">
         <xsl:apply-templates select="atom:entry"/>
       </div>
+     
+      <xsl:call-template name="footer"/>
     </body>
   </html>
 </xsl:template>
