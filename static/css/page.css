@@ -1,0 +1,20 @@
+div#main {
+  height:80%;
+  left:0;
+   right:0;
+   margin: 0 auto; 
+  text-align: center;
+  position: relative;
+}
+
+body {
+  height 100%;
+}
+
+div#img{
+  height: 100%;
+}
+
+#directories {
+  margin: 5vh 2vh;
+}

@@ -9,6 +9,7 @@
       <title><xsl:value-of select="atom:title"/></title>
       <xsl:call-template name="common-html-head-tags"/>
       <xsl:apply-templates select="atom:link[@rel='previous' or @rel='next' or @rel='index']" mode="head"/>
+      <link rel="stylesheet" href="/css/page.css"/> 
     </head>
     <body>
       <xsl:call-template name="top-navigatoin-bar"/>

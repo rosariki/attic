@@ -13,37 +13,29 @@
       <xsl:call-template name="common-html-head-tags"/>
       <title><xsl:value-of select="atom:title"/></title>
       <xsl:apply-templates select="atom:link[@rel='previous' or @rel='next' or @rel='index']" mode="head"/>
-      <style type="text/css">
-img.main {
-  float: left
-}
-      </style>
-      <script type="text/javascript"><![CDATA[
-YUI().use('node', 'event', function (Y) {
-  Y.on("domready", function() {
-    Y.all("link.navigation").each(function(link) {
-      if(link.get('rel') == 'next') {
-        var node = Y.Node.create('<a href="' + link.get('href') + '" title="' + link.get('title') + '"><div class="next-link"></div></a>');
-        Y.one("body").appendChild(node);
-      }
-    });
-  });
-});
-      ]]></script>
+      <link type="text/css" rel="stylesheet" href="/css/image.css"/>
+    <script>
+      $(document).ready(function(){
+         if($('link[rel=previous]').length) { var uri=$("link[rel=previous]").attr("href");  var node='<a href="'+uri+'"> <div id="prev" class="nav"><img src="/images/prev.png"/></div></a>'; console.log(node); $('section#main').append(node);}
+         if($('link[rel=next]').length) { var uri=$("link[rel=next]").attr("href");  var node='<a href="'+uri+'"> <div id="next" class="nav"><img src="/images/next.png"/></div></a>'; console.log(node); $('section#main').append(node);}
+         $('.nav').hover(function(){$('.nav img').css('display', 'block');}, function(){$('.nav img').css('display','none');})
+      });
+    </script>
     </head>
     <body>
       <div>
         <xsl:call-template name="top-navigatoin-bar"/>
         <!--<h1><xsl:value-of select="atom:title"/></h1>-->
       </div>
+      <section id="main">
       <figure>
-        <div>
+        <div id="main"> 
           <xsl:apply-templates select="atom:link[@rel='alternate' and @type='image/jpg']" mode="image-thumbnail">
             <xsl:with-param name="size" select="'large'"/>
             <xsl:with-param name="class" select="'main'"/>
             <xsl:with-param name="alt" select="atom:title"/>
           </xsl:apply-templates>
-          <figcaption style="display: inline">
+          <figcaption>
             <xsl:call-template name="date"/>
             <xsl:apply-templates select="dc:description"/>
             <p class="exif">
@@ -54,6 +46,9 @@ YUI().use('node', 'event', function (Y) {
        <!-- <hr width="300px" align="left" style="margin-top: 1em; clear: both"/>
         <div class="copyright-notice">&#169; 1999&#150;2013 Dmitri Popov</div> -->
       </figure>
+    <!--  <div id="prev" class="nav"><img src="/images/prev.png"/></div>
+      <div id="next" class="nav"><img src="/images/next.png"/></div> -->
+      </section>
 
       <xsl:call-template name="footer"/>
     </body>

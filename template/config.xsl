@@ -97,8 +97,8 @@ a.next {
 </xsl:template>
 
 <xsl:template name="footer">
-   <p class="clear"></p>
    <footer>
+    <div class="clear"></div>
     <h3 class="hidden"> Footer</h3>
     <hr width="300px" align="left" style="margin-top: 1em; clear: both"/>
     <section id="copyright-notice">
